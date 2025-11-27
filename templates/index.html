@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Based Music Recommendation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        #videoElement {
+            border: 3px solid #333;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .result-section {
+            margin-top: 30px;
+        }
+        .result-section p {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mood Based Music Recommendation</h1>
+
+    <img src="/video" width="480" height="360" id="videoElement" alt="Live Camera Feed">
+    <br>
+
+    <button onclick="getMusicRecommendation()">Detect Emotion & Get Music</button>
+    
+    <div class="result-section">
+        <h2>Detected Emotion:</h2>
+        <p id="emotionResult">-</p>
+        
+        <h2>Recommended Songs:</h2>
+        <p id="songResult">-</p>
+    </div>
+
+    <script>
+        function getMusicRecommendation() {
+            // 1. Show a loading message while waiting for the server
+            document.getElementById('emotionResult').innerText = 'Detecting...';
+            document.getElementById('songResult').innerText = 'Loading...';
+
+            // 2. Send a GET request to the server's /recommend endpoint
+            fetch('/recommend')
+                .then(response => {
+                    // Check for a non-successful HTTP status (like 500)
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    // Parse the response as JSON
+                    return response.json();
+                })
+                .then(data => {
+                    // 3. Update the HTML elements with the emotion and song from the JSON data
+                    document.getElementById('emotionResult').innerText = data.emotion;
+                    document.getElementById('songResult').innerText = data.song;
+                })
+                .catch(error => {
+                    // 4. Handle any errors during the request or on the server side
+                    console.error('Error fetching recommendation:', error);
+                    document.getElementById('emotionResult').innerText = 'ERROR';
+                    document.getElementById('songResult').innerText = 'Check the VS Code terminal for details.';
+                });
+        }
+    </script>
+</body>
+</html>
