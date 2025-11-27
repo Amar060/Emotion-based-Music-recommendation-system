@@ -43,16 +43,16 @@ User → Webcam → Face Detection → Emotion Prediction → Music Recommendati
 
 ## 📂 Project Structure
 
-📁 Emotion-Music-Recommender
-┣ 📄 app.py # Flask web server
-┣ 📄 emotion.py # Emotion detector (face + CNN)
-┣ 📄 music.py # Mood-based song mapping
-┣ 📄 train.py # CNN model training script
-┣ 📄 final_emotion_model.h5 # Trained model file
-┣ 📁 templates
-┃ ┗ 📄 index.html # Frontend page
-┗ 📄 README.md
-
+```bash
+Emotion-based-Music-recommendation-system/
+├─ app.py                 # Flask web server
+├─ emotion.py             # Emotion detector (face + CNN)
+├─ music.py               # Mood-based song mapping
+├─ train.py               # CNN training script
+├─ final_emotion_model.h5 # Trained CNN model file (optional in repo)
+├─ templates/
+│  └─ index.html          # Frontend page
+└─ README.md
 ---
 
 ## ▶️ How to Run
@@ -71,15 +71,15 @@ http://127.0.0.1:5000/
 🎵 Song Recommendation Logic
 
 Each emotion maps to multiple predefined songs.
-Example:
 
-  Emotion          Suggested Song
-Happy	Happy      – Pharrell Williams
-Sad	Fix You      – Coldplay
+Emotion	Example Suggested Song
+Happy	Happy – Pharrell Williams
+Sad	Fix You – Coldplay
 Angry	In The End – Linkin Park
-Neutral	Perfect  – Ed Sheeran
+Neutral	Perfect – Ed Sheeran
+Surprise	Adventure of a Lifetime – Coldplay
 
-(See full list in music.py)
+(Full mapping is defined in music.py)
 
 ---
 
