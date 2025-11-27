@@ -41,18 +41,18 @@ User → Webcam → Face Detection → Emotion Prediction → Music Recommendati
 
 ---
 
-## 📂 Project Structure
-
+## Project Structure
 
 Emotion-based-Music-recommendation-system/
-├─ app.py                 # Flask web server
-├─ emotion.py             # Emotion detector (face + CNN)
-├─ music.py               # Mood-based song mapping
-├─ train.py               # CNN training script
-├─ final_emotion_model.h5 # Trained CNN model file (optional in repo)
-├─ templates/
-│  └─ index.html          # Frontend page
-└─ README.md
+→ app.py                 # Flask web server (runs the app + video feed + API)
+→ emotion.py             # Emotion detection class (Haar Cascade + CNN prediction)
+→ music.py               # Dictionary-based song recommendation logic
+→ train.py               # CNN training script for FER-2013 dataset
+→ final_emotion_model.h5 # Trained emotion recognition model
+→ templates/             # Frontend HTML UI
+  → index.html           # Main webpage displaying live camera stream
+→ README.md              # Documentation
+
 ---
 
 ## ▶️ How to Run
