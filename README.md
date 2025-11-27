@@ -43,7 +43,7 @@ User → Webcam → Face Detection → Emotion Prediction → Music Recommendati
 
 ## 📂 Project Structure
 
-```bash
+
 Emotion-based-Music-recommendation-system/
 ├─ app.py                 # Flask web server
 ├─ emotion.py             # Emotion detector (face + CNN)
@@ -58,52 +58,50 @@ Emotion-based-Music-recommendation-system/
 ## ▶️ How to Run
 
 ### 1️⃣ Install Libraries
-pip install flask opencv-python numpy tensorflow
+  pip install flask opencv-python numpy tensorflow
 
 ### 2️⃣ Start The Web App
-python app.py
+  python app.py
 
 ### 3️⃣ Open in Browser
-http://127.0.0.1:5000/
+  http://127.0.0.1:5000/
 
 ---
 
-🎵 Song Recommendation Logic
+## Song Recommendation Logic
 
-Each emotion maps to multiple predefined songs.
+Each emotion maps to songs. Example:
 
-Emotion	Example Suggested Song
-Happy	Happy – Pharrell Williams
-Sad	Fix You – Coldplay
-Angry	In The End – Linkin Park
-Neutral	Perfect – Ed Sheeran
-Surprise	Adventure of a Lifetime – Coldplay
+| Emotion | Suggested Song |
+|--------|----------------|
+| Happy | Happy – Pharrell Williams |
+| Sad | Fix You – Coldplay |
+| Angry | In The End – Linkin Park |
+| Neutral | Perfect – Ed Sheeran |
 
-(Full mapping is defined in music.py)
-
----
-
-📊 Model Information
-
-Trained on FER-2013 Dataset
-Achieved ~60%+ validation accuracy
-
-CNN layers:
-  -3× Conv2D blocks (64 → 128 → 256 filters)
-  -BatchNorm + MaxPooling + Dropout
-  -Dense(512) + Dropout
-  -Output: Softmax(7)
-
-Model saved as: final_emotion_model.h5
+(Full song dictionary is in music.py)
 
 ---
 
-🚀 Future Enhancements: 
+## Model Details
 
-> Spotify or YouTube API integration
-> Better deep-learning based face detector (MTCNN / YOLO)
-> More accurate model architecture (ResNet / MobileNet)
-> Personalized dynamic playlists
+- Trained on FER-2013 facial emotion dataset
+- CNN architecture:
+  - 3 Conv2D blocks (64, 128, 256 filters)
+  - BatchNormalization + MaxPooling + Dropout
+  - Dense(512) classifier with Dropout
+  - Softmax output for 7 classes
+- Achieved ~60% validation accuracy
+- Model saved as: final_emotion_model.h5
+
+---
+
+## Future Work
+
+- Integrate Spotify / YouTube Data API
+- Use MTCNN / YOLO for face detection
+- Improve model accuracy with ResNet/MobileNet
+- Personalized playlist generation
 
 ---
 
